@@ -73,10 +73,10 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
         <div className="p-6 flex flex-col h-full">
           <div className="flex items-center justify-between mb-10">
             <div className="flex items-center">
-              <div className="bg-academi-600 text-white p-2 rounded-lg">
+              <div className="bg-primary text-white p-2 rounded-lg">
                 <Book className="h-6 w-6" />
               </div>
-              <h1 className="text-xl font-bold ms-3 text-academi-800">أكاديمي</h1>
+              <h1 className="text-xl font-bold ms-3 text-primary">أكاديمي</h1>
             </div>
             <Button
               variant="ghost"
@@ -93,7 +93,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
               <Button
                 key={item.name}
                 variant="ghost"
-                className="w-full justify-start text-base font-normal py-3 px-4"
+                className="w-full justify-start text-base font-normal py-3 px-4 hover:bg-primary/5"
                 onClick={() => navigate(item.path)}
               >
                 <item.icon className="mr-3 h-5 w-5" />
@@ -127,13 +127,14 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
       <div className="flex-1 flex flex-col min-h-screen">
         {/* Header */}
         <header className="bg-white border-b p-4 flex justify-between items-center">
-          <h1 className="text-xl font-semibold">لوحة التحكم</h1>
-          <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="icon">
+          <h1 className="text-xl font-semibold text-gray-800">لوحة التحكم</h1>
+          <div className="flex items-center gap-4">
+            <Button variant="ghost" size="icon" className="relative">
               <Bell className="h-5 w-5" />
+              <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
             </Button>
             <div className="flex items-center">
-              <div className="w-8 h-8 bg-academi-100 rounded-full flex items-center justify-center text-academi-600">
+              <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center text-primary">
                 <User className="h-5 w-5" />
               </div>
               <span className="mr-2 text-sm font-medium">{username}</span>

@@ -5,8 +5,8 @@ import DashboardStats from "@/components/dashboard/DashboardStats";
 import CourseCard from "@/components/dashboard/CourseCard";
 import UpcomingEvents from "@/components/dashboard/UpcomingEvents";
 import { Book, Calendar, MessageSquare } from "lucide-react";
+import { motion } from "framer-motion";
 
-// Updated mock data
 const mockCourses = [
   {
     id: "cloud101",
@@ -87,14 +87,12 @@ const StudentDashboard = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check if user is logged in as student
     const userType = localStorage.getItem("userType");
     if (userType !== "student") {
       navigate("/");
       return;
     }
     
-    // Simulate loading data
     const timer = setTimeout(() => {
       setLoading(false);
     }, 1000);
@@ -106,7 +104,10 @@ const StudentDashboard = () => {
     return (
       <DashboardLayout userType="student">
         <div className="flex justify-center items-center h-64">
-          <p className="text-lg">جاري تحميل البيانات...</p>
+          <div className="animate-pulse space-y-4">
+            <div className="h-8 w-32 bg-gray-200 rounded"></div>
+            <div className="h-4 w-48 bg-gray-200 rounded"></div>
+          </div>
         </div>
       </DashboardLayout>
     );
@@ -114,55 +115,64 @@ const StudentDashboard = () => {
 
   return (
     <DashboardLayout userType="student">
-      <h1 className="text-3xl font-bold mb-6">لوحة التحكم</h1>
-      
-      <DashboardStats userType="student" />
-      
-      <div className="mt-10">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-xl font-bold">المقررات الدراسية</h2>
-          <button 
-            className="text-academi-600 hover:text-academi-700"
-            onClick={() => navigate("/student/courses")}
-          >
-            عرض الكل
-          </button>
+      <div className="space-y-8">
+        <div className="animate-fade-in">
+          <h1 className="section-header">لوحة التحكم</h1>
+          <DashboardStats userType="student" />
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {mockCourses.map((course) => (
-            <CourseCard key={course.id} {...course} userType="student" />
-          ))}
-        </div>
-      </div>
-      
-      <div className="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2">
-          <UpcomingEvents events={mockEvents} />
-        </div>
-        <div>
-          {/* Resources card */}
-          <div className="bg-white rounded-xl shadow-md p-6">
-            <h3 className="text-lg font-bold mb-4">روابط سريعة</h3>
-            <div className="space-y-4">
-              <a href="#" className="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                <div className="p-2 rounded-full bg-blue-100 text-blue-600">
-                  <Calendar className="h-5 w-5" />
-                </div>
-                <span className="mr-3 font-medium">الجدول الدراسي</span>
-              </a>
-              <a href="#" className="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                <div className="p-2 rounded-full bg-green-100 text-green-600">
-                  <Book className="h-5 w-5" />
-                </div>
-                <span className="mr-3 font-medium">المكتبة الإلكترونية</span>
-              </a>
-              <a href="#" className="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                <div className="p-2 rounded-full bg-purple-100 text-purple-600">
-                  <MessageSquare className="h-5 w-5" />
-                </div>
-                <span className="mr-3 font-medium">منتدى النقاش</span>
-              </a>
+        <section className="animate-slide-up">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-xl font-bold">المقررات الدراسية</h2>
+            <button 
+              className="text-primary hover:text-primary/80 transition-colors"
+              onClick={() => navigate("/student/courses")}
+            >
+              عرض الكل
+            </button>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {mockCourses.slice(0, 6).map((course) => (
+              <motion.div
+                key={course.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <CourseCard {...course} userType="student" />
+              </motion.div>
+            ))}
+          </div>
+        </section>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2">
+            <UpcomingEvents events={mockEvents} />
+          </div>
+          <div>
+            <div className="glass-card p-6">
+              <h3 className="text-lg font-bold mb-4">روابط سريعة</h3>
+              <div className="space-y-4">
+                <a href="#" className="flex items-center p-3 bg-gray-50/50 rounded-lg hover:bg-gray-100/50 transition-colors">
+                  <div className="p-2 rounded-full bg-blue-100 text-blue-600">
+                    <Calendar className="h-5 w-5" />
+                  </div>
+                  <span className="mr-3 font-medium">الجدول الدراسي</span>
+                </a>
+                <a href="#" className="flex items-center p-3 bg-gray-50/50 rounded-lg hover:bg-gray-100/50 transition-colors">
+                  <div className="p-2 rounded-full bg-green-100 text-green-600">
+                    <Book className="h-5 w-5" />
+                  </div>
+                  <span className="mr-3 font-medium">المكتبة الإلكترونية</span>
+                </a>
+                <a href="#" className="flex items-center p-3 bg-gray-50/50 rounded-lg hover:bg-gray-100/50 transition-colors">
+                  <div className="p-2 rounded-full bg-purple-100 text-purple-600">
+                    <MessageSquare className="h-5 w-5" />
+                  </div>
+                  <span className="mr-3 font-medium">منتدى النقاش</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
