@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Card } from "@/components/ui/card";
+import { Book, Calendar, MessageSquare, User } from "lucide-react";
 
 type StatCardProps = {
   title: string;
