@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DashboardLayout from "@/components/layout/DashboardLayout";
@@ -7,32 +6,56 @@ import CourseCard from "@/components/dashboard/CourseCard";
 import UpcomingEvents from "@/components/dashboard/UpcomingEvents";
 import { Book, Calendar, MessageSquare } from "lucide-react";
 
-// Mock data
+// Updated mock data
 const mockCourses = [
   {
-    id: "cs101",
-    code: "CS 101",
-    name: "مقدمة في علوم الحاسب",
-    instructor: "محمد أحمد",
+    id: "cloud101",
+    code: "CLD 101",
+    name: "الحوسبة السحابية",
+    instructor: "د. محمد أحمد",
     progress: 75,
     color: "bg-blue-600",
   },
   {
-    id: "math201",
-    code: "MATH 201",
-    name: "التفاضل والتكامل",
-    instructor: "أحمد خالد",
+    id: "it101",
+    code: "IT 101",
+    name: "أساسيات تقنية المعلومات",
+    instructor: "د. أحمد خالد",
     progress: 60,
     color: "bg-green-600",
   },
   {
-    id: "eng101",
-    code: "ENG 101",
-    name: "اللغة الإنجليزية",
-    instructor: "سارة محمد",
+    id: "eng201",
+    code: "ENG 201",
+    name: "اللغة الإنجليزية لعلوم الحاسب",
+    instructor: "د. سارة محمد",
     progress: 40,
     color: "bg-purple-600",
   },
+  {
+    id: "os301",
+    code: "OS 301",
+    name: "نظم تشغيل",
+    instructor: "د. فيصل علي",
+    progress: 85,
+    color: "bg-orange-600",
+  },
+  {
+    id: "net401",
+    code: "NET 401",
+    name: "شبكات الحاسب",
+    instructor: "د. عبدالله محمد",
+    progress: 70,
+    color: "bg-red-600",
+  },
+  {
+    id: "cld201",
+    code: "CLD 201",
+    name: "البنية التحتية وخدمات الحوسبة السحابية",
+    instructor: "د. خالد عمر",
+    progress: 55,
+    color: "bg-indigo-600",
+  }
 ];
 
 const mockEvents = [

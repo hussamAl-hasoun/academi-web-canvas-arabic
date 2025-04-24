@@ -1,7 +1,6 @@
-
 import React from "react";
 import { Card } from "@/components/ui/card";
-import { Book, Calendar, MessageSquare, User } from "lucide-react";
+import { Book, Calendar, MessageSquare, User, Cloud, Database, Network, Terminal, Shield, Laptop } from "lucide-react";
 
 type StatCardProps = {
   title: string;
@@ -42,14 +41,14 @@ const DashboardStats: React.FC<DashboardStatsProps> = ({ userType }) => {
   const studentStats = [
     {
       title: "المقررات المسجلة",
-      value: "5",
+      value: "6",
       icon: <Book className="h-5 w-5" />,
       color: "bg-blue-100 text-blue-600",
     },
     {
       title: "المهام المطلوبة",
-      value: "3",
-      description: "متبقي يومان",
+      value: "4",
+      description: "متبقي 3 أيام",
       icon: <Calendar className="h-5 w-5" />,
       color: "bg-orange-100 text-orange-600",
     },

@@ -2,7 +2,7 @@
 import React from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Book } from "lucide-react";
+import { Cloud, Database, Network, Terminal, Shield, Laptop, Book } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import { useNavigate } from "react-router-dom";
 
@@ -26,7 +26,17 @@ const CourseCard: React.FC<CourseCardProps> = ({
   userType,
 }) => {
   const navigate = useNavigate();
-  
+
+  const getCourseIcon = (code: string) => {
+    if (code.startsWith('CLD')) return <Cloud className="h-5 w-5" />;
+    if (code.startsWith('IT')) return <Laptop className="h-5 w-5" />;
+    if (code.startsWith('OS')) return <Terminal className="h-5 w-5" />;
+    if (code.startsWith('NET')) return <Network className="h-5 w-5" />;
+    if (code.startsWith('SEC')) return <Shield className="h-5 w-5" />;
+    if (code.startsWith('DB')) return <Database className="h-5 w-5" />;
+    return <Book className="h-5 w-5" />;
+  };
+
   const handleViewCourse = () => {
     if (userType === "student") {
       navigate(`/student/courses/${id}`);
@@ -48,7 +58,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
             </p>
           </div>
           <div className="p-3 rounded-full bg-academi-100 text-academi-600">
-            <Book className="h-5 w-5" />
+            {getCourseIcon(code)}
           </div>
         </div>
         
