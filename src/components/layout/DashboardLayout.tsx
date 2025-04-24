@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import {
   Bell,
   Book,
@@ -129,10 +130,17 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
         <header className="bg-white border-b p-4 flex justify-between items-center">
           <h1 className="text-xl font-semibold text-gray-800">لوحة التحكم</h1>
           <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" className="relative">
-              <Bell className="h-5 w-5" />
-              <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
-            </Button>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button variant="ghost" size="icon" className="relative">
+                    <Bell className="h-5 w-5" />
+                    <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>الإشعارات</TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
             <div className="flex items-center">
               <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center text-primary">
                 <User className="h-5 w-5" />
