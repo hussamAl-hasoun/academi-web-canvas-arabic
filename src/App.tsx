@@ -8,6 +8,10 @@ import Index from "./pages/Index";
 import StudentDashboard from "./pages/StudentDashboard";
 import ProfessorDashboard from "./pages/ProfessorDashboard";
 import NotFound from "./pages/NotFound";
+import CoursesPage from "./pages/student/CoursesPage";
+import SchedulePage from "./pages/student/SchedulePage";
+import MessagesPage from "./pages/student/MessagesPage";
+import SettingsPage from "./pages/student/SettingsPage";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +26,10 @@ const App = () => (
           
           {/* Student Routes */}
           <Route path="/student/dashboard" element={<StudentDashboard />} />
+          <Route path="/student/courses" element={<CoursesPage />} />
+          <Route path="/student/schedule" element={<SchedulePage />} />
+          <Route path="/student/messages" element={<MessagesPage />} />
+          <Route path="/student/settings" element={<SettingsPage />} />
           
           {/* Professor Routes */}
           <Route path="/professor/dashboard" element={<ProfessorDashboard />} />
@@ -35,3 +43,4 @@ const App = () => (
 );
 
 export default App;
+
