@@ -45,6 +45,7 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: 'Cairo', sans-serif;
   }
 
   html {
@@ -58,7 +59,7 @@
   }
   
   .dashboard-stats-card {
-    @apply bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-sm p-4 border border-gray-100 hover:shadow-md transition-all duration-300;
+    @apply bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 overflow-visible z-10;
   }
   
   .form-input {
@@ -97,4 +98,3 @@
     opacity: 1;
   }
 }
-

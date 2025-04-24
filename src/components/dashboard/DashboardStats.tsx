@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card } from "@/components/ui/card";
 import { Book, Calendar, MessageSquare, User, Cloud, Database, Network, Terminal, Shield, Laptop } from "lucide-react";
@@ -18,8 +19,8 @@ export const StatCard: React.FC<StatCardProps> = ({
   color = "bg-academi-100 text-academi-600",
 }) => {
   return (
-    <Card className="dashboard-stats-card">
-      <div className="flex items-start justify-between">
+    <Card className="dashboard-stats-card overflow-visible">
+      <div className="flex items-start justify-between p-4">
         <div>
           <p className="text-sm font-medium text-gray-500">{title}</p>
           <h3 className="text-2xl font-bold mt-1">{value}</h3>
@@ -27,7 +28,7 @@ export const StatCard: React.FC<StatCardProps> = ({
             <p className="text-xs text-gray-500 mt-1">{description}</p>
           )}
         </div>
-        <div className={`p-3 rounded-full ${color}`}>{icon}</div>
+        <div className={`p-3 rounded-full ${color} flex items-center justify-center`}>{icon}</div>
       </div>
     </Card>
   );
